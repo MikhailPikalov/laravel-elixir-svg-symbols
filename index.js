@@ -1,3 +1,4 @@
+var path      = require('path');
 var gulp      = require('gulp');
 var svgSprite = require('gulp-svg-sprite');
 var Elixir    = require('laravel-elixir');
@@ -48,5 +49,5 @@ Elixir.extend('svgSprite', function(src, output, options) {
             .pipe(gulp.dest(paths.output.path))
             .pipe(new Elixir.Notification('SVG sprite generated'))
     })
-    .watch(config.get('assets.svgSprite.folder') + '/**/*.svg');
+    .watch(path.join(src || config.get('assets.svgSprite.folder'), '/**/*.svg'));
 });
